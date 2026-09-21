@@ -1,0 +1,34 @@
+name: spider_tracker
+description: Personal fitness and diet tracker. Local-only, no backend.
+publish_to: none
+
+version: 1.7.0+9
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Local persistence. No backend by design (PRD section 07).
+  sqflite: ^2.4.1
+  path: ^1.9.0
+
+  # Weight trend and diet-score history.
+  fl_chart: ^0.69.2
+
+  # Bebas Neue (display) and Inter (body), fetched and cached at runtime
+  # so no font binaries live in the repo.
+  google_fonts: ^6.2.1
+  sqflite_common_ffi_web: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/google_fonts/
