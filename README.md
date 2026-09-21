@@ -1,41 +1,86 @@
 # Spider-Tracker
 
-Personal fitness and diet tracker for Karan Anand. Local-only Flutter Android app —
-no login, no server, no network. Goal: 95 kg → 82.5 kg by 2026-12-01.
+A fitness tracker for Android that keeps everything on your phone. You tell it
+about yourself, an AI assistant of your choice (or you) builds the plan, and the
+app turns your daily habits into points, levels and badges.
 
-**Start here: [`PROJECT_GRAPH.md`](PROJECT_GRAPH.md)** — full state of the project,
-what's done, what's left, and the conventions to keep.
-Scope contract: [`docs/PRD.md`](docs/PRD.md).
+**No account. No cloud. No internet permission.** The release APK does not
+request network access at all, so your data cannot leave the device.
 
-## Running it
+## Download
 
-The Flutter SDK is not on PATH on this machine:
+**[Download the latest APK](https://github.com/Karan1114Anand/SpiderTracker-FitnessTracker/releases/latest/download/Spider-Tracker.apk)**
+· [All releases](https://github.com/Karan1114Anand/SpiderTracker-FitnessTracker/releases)
+· [SHA-256 checksum](https://github.com/Karan1114Anand/SpiderTracker-FitnessTracker/releases/latest/download/Spider-Tracker.apk.sha256)
+
+Requires Android 7.0 (API 24) or newer.
+
+### Install
+
+1. Open the download link on your phone (or copy the file to it).
+2. Tap the downloaded `Spider-Tracker.apk`.
+3. If Android asks, allow installs from your browser or file manager
+   (Settings, Install unknown apps). This is needed because the app isn't
+   on the Play Store.
+4. Open **Spider-Tracker** and complete sign-up.
+
+Prefer to verify the file first? Compare its SHA-256 with the `.sha256` file:
 
 ```bash
-export PATH="$PATH:/home/klaus/devtools/flutter/bin"
-cd /home/klaus/Projects/Spider-Tracker
-
-flutter analyze     # clean as of 2026-09-22
-flutter test        # 23 passing
-flutter run         # device or emulator
+sha256sum -c Spider-Tracker.apk.sha256
 ```
 
-### Web preview
+## What it does
 
-Runs against IndexedDB, not SQLite — preview only, data does not carry to the phone.
-Requires `web/sqlite3.wasm` and `web/sqflite_sw.js`, both already present. Without them
-the app hangs on a silent splash forever.
+- **Personal plan.** Sign up with your name, age, height, weight, goal and the
+  kind of workouts you can do. The app writes a prompt for you. Paste it into
+  any AI assistant, paste the reply back, and your workout week and meal
+  options are set. Or skip the AI and build your workout week by hand.
+- **Daily tracking.** Log workout sets, meals (pick from your plan or type your
+  own), water, sleep and runs. Weigh in weekly.
+- **Points, levels and badges.** Each habit earns points toward a daily total of
+  112. Points add up to levels, and 20 badges mark milestones such as streaks,
+  hydration, sleep, running and weight goals. There is no calorie counting.
+- **Web radar.** Home shows today's five habits as a web that fills in as you
+  log, so the weakest habit is obvious at a glance.
+- **Progress.** Weight trend against a realistic range, a 12-week consistency
+  grid and diet history.
+- **Effects.** A web-shot animation with a sound on key actions. Mute it from
+  Profile.
+
+## Privacy
+
+- All data lives in a local SQLite database on your phone.
+- The app has no analytics, no accounts and no network permission.
+- The only thing that ever leaves your phone is the prompt **you** choose to
+  paste into an AI assistant, and the reply you paste back.
+- Delete everything at any time from Profile, or by uninstalling the app.
+
+## Build from source
+
+Requirements: Flutter 3.35 (stable) and JDK 17.
 
 ```bash
-flutter run -d chrome
-```
-
-### APK
-
-Not yet built. Change `applicationId`, `android:label` and the launcher icon first —
-see B3 in `PROJECT_GRAPH.md`.
-
-```bash
+git clone https://github.com/Karan1114Anand/SpiderTracker-FitnessTracker.git
+cd SpiderTracker-FitnessTracker
+flutter pub get
+flutter test
 flutter build apk --release
-adb install -r build/app/outputs/flutter-apk/app-release.apk
+# APK: build/app/outputs/flutter-apk/app-release.apk
 ```
+
+A JDK newer than 17 can break the Gradle build; if `flutter doctor` picks the
+wrong one, run `flutter config --jdk-dir /path/to/jdk17`.
+
+Releases and signing are described in [docs/RELEASING.md](docs/RELEASING.md).
+The code layout is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+## Contributing
+
+Issues and pull requests are welcome. Please run `flutter analyze` and
+`flutter test` before opening a pull request.
+
+## License
+
+[MIT](LICENSE). The bundled IBM Plex fonts are under the
+[SIL Open Font License](assets/google_fonts/LICENSE-IBM-Plex.txt).

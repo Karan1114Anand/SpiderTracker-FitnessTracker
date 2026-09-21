@@ -13,19 +13,19 @@ Goal: 95 kg → 82.5 kg by 2026-12-01. Spider-Man themed. No backend, no login, 
 ## 0. Orientation — where things are
 
 ```
-/home/klaus/Projects/Spider-Tracker/     ← canonical location (this dir)
-/home/klaus/.openclaw/workspace/spider-tracker/   ← original; identical copy, now stale.
+<repo>/     ← canonical location (this dir)
+<old copy>/   ← original; identical copy, now stale.
                                                      Delete once you trust this one.
 ```
 
 Flutter SDK is **not on PATH**. Every command below needs:
 
 ```bash
-export PATH="$PATH:/home/klaus/devtools/flutter/bin"
-cd /home/klaus/Projects/Spider-Tracker
+export PATH="$PATH:~/devtools/flutter/bin"
+cd <repo>
 ```
 
-Android SDK lives at `/home/klaus/devtools/android-sdk` (platform-tools, android-35,
+Android SDK lives at `~/devtools/android-sdk` (platform-tools, android-35,
 build-tools 35.0.0 installed; Flutter already configured to point at it).
 `android/local.properties` holds both paths — it is machine-local, do not commit it.
 
@@ -179,8 +179,8 @@ this lands.
 Never built. Gradle's first run takes several minutes; budget for it.
 
 ```bash
-export PATH="$PATH:/home/klaus/devtools/flutter/bin"
-cd /home/klaus/Projects/Spider-Tracker
+export PATH="$PATH:~/devtools/flutter/bin"
+cd <repo>
 flutter build apk --release
 ```
 

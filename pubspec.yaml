@@ -1,5 +1,5 @@
 name: spider_tracker
-description: Personal fitness and diet tracker. Local-only, no backend.
+description: Local-only fitness tracker with points, levels and badges. Your plan comes from any AI assistant or your own hands.
 publish_to: none
 
 version: 1.7.0+9
@@ -11,15 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Local persistence. No backend by design (PRD section 07).
+  # Local persistence. There is no backend by design.
   sqflite: ^2.4.1
   path: ^1.9.0
 
   # Weight trend and diet-score history.
   fl_chart: ^0.69.2
 
-  # Bebas Neue (display) and Inter (body), fetched and cached at runtime
-  # so no font binaries live in the repo.
+  # Theme fonts. IBM Plex is bundled in assets/google_fonts, so nothing is
+  # fetched at runtime.
   google_fonts: ^6.2.1
   sqflite_common_ffi_web: ^1.0.2
 
